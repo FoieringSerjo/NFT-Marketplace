@@ -164,7 +164,7 @@ const NFTcreate: NextPage = () => {
                         Brief description of NFT
                       </p>
                     </div>
-                    {/* Has Image? */}
+                    {/* //highlight: Has Image? */}
                     {false ? (
                       <img
                         src="https://eincode.mypinata.cloud/ipfs/QmaQYCrX9Fg2kGijqapTYgpMXV7QPPzMwGrSRfV9TvTsfM/Creature_1.png"
