@@ -19,7 +19,7 @@ const ActiveLink: FunctionComponent<LinkProps> = ({ children, ...props }) => {
     className = _defaultClass;
   }
 
-  return <Link {...props}>{React.cloneElement(children, { className })}</Link>;
+  return <Link {...props} legacyBehavior>{React.cloneElement(children, { className })}</Link>;
 };
 
 export default ActiveLink;

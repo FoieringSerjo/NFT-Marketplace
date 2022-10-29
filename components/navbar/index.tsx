@@ -53,9 +53,9 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <ActiveLink
-                        activeClass="bg-gray-900 text-white"
                         key={item.name}
-                        href={item.href}>
+                        href={item.href}
+                        activeClass="bg-gray-900 text-white">
                         <a
                           className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                           aria-current={item.current ? 'page' : undefined}>
