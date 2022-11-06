@@ -5,7 +5,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import ActiveLink from '../link';
-import { useAccount } from '@hooks';
+import { useWeb3 } from '@providers/web3';
 
 const navigation = [
   { name: 'Marketplace', href: '/', current: true },
@@ -18,13 +18,12 @@ function classNames(...classes: string[]) {
 
 export default function Navbar() {
   // debugger;
-  const { data } = useAccount('Some Random Params');
-  console.log(data);
+  const { hooks } = useWeb3();
+  const { data } = hooks.useAccount('');
+  console.log(`data`, data);
 
   return (
-    <Disclosure
-      as="nav"
-      className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -34,15 +33,9 @@ export default function Navbar() {
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon
-                      className="block h-6 w-6"
-                      aria-hidden="true"
-                    />
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon
-                      className="block h-6 w-6"
-                      aria-hidden="true"
-                    />
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
@@ -76,15 +69,10 @@ export default function Navbar() {
                   type="button"
                   className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span className="sr-only">View notifications</span>
-                  <BellIcon
-                    className="h-6 w-6"
-                    aria-hidden="true"
-                  />
+                  <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
                 {/* //highlight: Profile dropdown */}
-                <Menu
-                  as="div"
-                  className="ml-3 relative z-10">
+                <Menu as="div" className="ml-3 relative z-10">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -106,9 +94,7 @@ export default function Navbar() {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            href="/profile"
-                            legacyBehavior>
+                          <Link href="/profile" legacyBehavior>
                             <a
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
